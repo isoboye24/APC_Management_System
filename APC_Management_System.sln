@@ -3,7 +3,55 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37710.0 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APCMS.API", "APCMS.API\APCMS.API.csproj", "{D586D62E-343E-4D52-9009-6D32E82D7C30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APCMS.Application", "APCMS.Application\APCMS.Application.csproj", "{67D3B49E-14CF-4B73-9B8C-CC1E6101159A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APCMS.Domain", "APCMS.Domain\APCMS.Domain.csproj", "{F450F7B1-670D-4C85-A01B-18EDED680314}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APCMS.Infrastructure", "APCMS.Infrastructure\APCMS.Infrastructure.csproj", "{B33094A9-5533-4E48-9FEC-36F9AEF8E467}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APCMS.Persisitence", "APCMS.Persisitence\APCMS.Persisitence.csproj", "{5039B8D7-31C5-403F-80E6-A6A620FB2248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APCMS.Security", "APCMS.Security\APCMS.Security.csproj", "{704F426D-0874-42D2-911F-F027FFFD7D98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APCMS.Test", "APCMS.Test\APCMS.Test.csproj", "{AE8BBB51-834E-4515-B643-33273ED36523}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D586D62E-343E-4D52-9009-6D32E82D7C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D586D62E-343E-4D52-9009-6D32E82D7C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D586D62E-343E-4D52-9009-6D32E82D7C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D586D62E-343E-4D52-9009-6D32E82D7C30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67D3B49E-14CF-4B73-9B8C-CC1E6101159A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67D3B49E-14CF-4B73-9B8C-CC1E6101159A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67D3B49E-14CF-4B73-9B8C-CC1E6101159A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67D3B49E-14CF-4B73-9B8C-CC1E6101159A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F450F7B1-670D-4C85-A01B-18EDED680314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F450F7B1-670D-4C85-A01B-18EDED680314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F450F7B1-670D-4C85-A01B-18EDED680314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F450F7B1-670D-4C85-A01B-18EDED680314}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B33094A9-5533-4E48-9FEC-36F9AEF8E467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B33094A9-5533-4E48-9FEC-36F9AEF8E467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B33094A9-5533-4E48-9FEC-36F9AEF8E467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B33094A9-5533-4E48-9FEC-36F9AEF8E467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5039B8D7-31C5-403F-80E6-A6A620FB2248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5039B8D7-31C5-403F-80E6-A6A620FB2248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5039B8D7-31C5-403F-80E6-A6A620FB2248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5039B8D7-31C5-403F-80E6-A6A620FB2248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{704F426D-0874-42D2-911F-F027FFFD7D98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{704F426D-0874-42D2-911F-F027FFFD7D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{704F426D-0874-42D2-911F-F027FFFD7D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{704F426D-0874-42D2-911F-F027FFFD7D98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE8BBB51-834E-4515-B643-33273ED36523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE8BBB51-834E-4515-B643-33273ED36523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE8BBB51-834E-4515-B643-33273ED36523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE8BBB51-834E-4515-B643-33273ED36523}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
