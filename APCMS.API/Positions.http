@@ -1,11 +1,11 @@
-@Host = http://192.168.0.195:2001/api/positions
+@Host = http://localhost:2001/api/positions
 
 ### Insert
 
 Post {{Host}}
 Content-type: application/json
 {
-  "name": "Worker"
+  "name": "Treasurer"
 }
 
 ### Get All
@@ -21,25 +21,25 @@ Accept: application/json
 
 ### Search by Id
 
-GET {{Host}}/019fe1c0-324c-7dac-b1ba-940c1a5ba4ab
+GET {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e
 ACCEPT: application/json
 
 ### Update by Id
 
-PUT {{Host}}/019fde4a-be8b-78e0-b0c4-665b1cdd9fdf
+PUT {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e
 Content-type: application/json
 {
-  "name": "Pastor"
+  "name": "Provoke"
 }
 
 ### Temporarily Delete by Id
 
-DELETE {{Host}}/019fe1c0-324c-7dac-b1ba-940c1a5ba4ab
+DELETE {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e
 
 ### Restore by Id
 
-PUT {{Host}}/019fe23b-6128-76ba-bfa2-b9d9726e2877/restore
+PUT {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e/restore
 
 ### Permanently Delete by Id
 
-DELETE {{Host}}/019fe23b-6128-76ba-bfa2-b9d9726e2877/permanent
+DELETE {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e/permanent
