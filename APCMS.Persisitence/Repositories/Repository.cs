@@ -1,0 +1,79 @@
+﻿using APCMS.Application.Contracts.Repositories;
+using APCMS.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+namespace APCMS.Persistence.Repositories
+{
+    public class Repository<T> : IRepository<T> where T : SoftDeletableEntity
+    {
+        private readonly APCMSDBContext _db;
+        public Repository(APCMSDBContext db)
+        {
+            _db = db;
+        }
+
+        public Task<T> Add(T entity)
+        {
+            _db.Add(entity);
+            return Task.FromResult(entity);
+        }
+
+        public Task Delete(T entity)
+        {
+            entity.Delete();
+
+            _db.Update(entity);
+
+            return Task.CompletedTask;
+        }
+
+        public Task DeletePermanently(T entity)
+        {
+            _db.Remove(entity);
+            return Task.CompletedTask;
+        }
+
+        public async Task<IEnumerable<T>> GetAll()
+        {
+            return await _db.Set<T>()
+                        .Where(x => !x.IsDeleted)
+                        .ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllDeleted()
+        {
+            return await _db.Set<T>()
+                        .Where(x => x.IsDeleted)
+                        .ToListAsync();
+        }
+
+        public Task Restore(T entity)
+        {
+            entity.Restore();
+
+            _db.Update(entity);
+
+            return Task.CompletedTask;
+        }
+
+        public async Task<T?> GetById(Guid id)
+        {
+            return await _db.Set<T>().FindAsync(id);
+        }
+
+        public async Task<int> GetTotalAmountOfRecords()
+        {
+            return await _db.Set<T>().CountAsync();
+        }
+
+        public Task Update(T entity)
+        {
+            _db.Update(entity);
+            return Task.CompletedTask;
+        }
+
+        public async Task<int> GetTotalAmountOfRecordsById(Guid id)
+        {
+            return await _db.Set<T>().CountAsync();
+        }
+    }
+}
