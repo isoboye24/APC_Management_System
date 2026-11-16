@@ -13,6 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\APCMS.Application\APCMS.Application.csproj" />
+    <ProjectReference Include="..\APCMS.Domain\APCMS.Domain.csproj" />
+    <ProjectReference Include="..\APCMS.Infrastructure\APCMS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 

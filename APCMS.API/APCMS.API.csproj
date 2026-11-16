@@ -10,4 +10,11 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.20" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\APCMS.Application\APCMS.Application.csproj" />
+    <ProjectReference Include="..\APCMS.Infrastructure\APCMS.Infrastructure.csproj" />
+    <ProjectReference Include="..\APCMS.Persisitence\APCMS.Persisitence.csproj" />
+    <ProjectReference Include="..\APCMS.Security\APCMS.Security.csproj" />
+  </ItemGroup>
+
 </Project>
