@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace APCMS.Persisitence
+namespace APCMS.Persistence
 {
     public static class DependencyInjection
     {
@@ -14,9 +14,9 @@ namespace APCMS.Persisitence
                 options.UseSqlServer(
                     configuration.GetConnectionString("APCMSConnection")));
 
-            // Register other persistence-related services here if needed
+            // Automatically register persistence services
             services.Scan(scan => scan
-                .FromAssembliesOf(typeof(DependencyInjection))
+                .FromAssemblyOf<APCMSDBContext>()
                 .AddClasses()
                 .AsImplementedInterfaces()
                 .WithScopedLifetime());

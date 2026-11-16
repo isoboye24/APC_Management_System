@@ -1,6 +1,7 @@
 ﻿using APCMS.Application.Contracts.Repositories;
 using APCMS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+
 namespace APCMS.Persistence.Repositories
 {
     public class Repository<T> : IRepository<T> where T : SoftDeletableEntity

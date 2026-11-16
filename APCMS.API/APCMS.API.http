@@ -1,6 +1,6 @@
-@APCMS.API_HostAddress = http://localhost:5033
+@HOST = http://192.168.0.195:2001/api/positions
 
-GET {{APCMS.API_HostAddress}}/weatherforecast/
+GET {{HOST}}
 Accept: application/json
 
 ###

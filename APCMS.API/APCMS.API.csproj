@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>0a954d30-d2f3-458b-b1a4-b46f1cd79622</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,8 +20,12 @@
   <ItemGroup>
     <ProjectReference Include="..\APCMS.Application\APCMS.Application.csproj" />
     <ProjectReference Include="..\APCMS.Infrastructure\APCMS.Infrastructure.csproj" />
-    <ProjectReference Include="..\APCMS.Persisitence\APCMS.Persisitence.csproj" />
+    <ProjectReference Include="..\APCMS.Persisitence\APCMS.Persistence.csproj" />
     <ProjectReference Include="..\APCMS.Security\APCMS.Security.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
