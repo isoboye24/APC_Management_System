@@ -1,0 +1,36 @@
+﻿using APCMS.Domain.Exceptions;
+
+namespace APCMS.Domain.Entities
+{
+    public class Position : SoftDeletableEntity
+    {
+        public string Name { get; private set; } = string.Empty;
+
+        public Position(string name)
+        {
+            ValidateName(name);
+
+            Name = name;
+            Id = Guid.CreateVersion7();
+        }
+
+        private Position()
+        {
+            
+        }
+
+        public void UpdateName(string name)
+        {
+            ValidateName(name);
+            Name = name;
+        }
+
+        private static void ValidateName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new BusinessRuleException("Position's name is required.");
+            }
+        }
+    }
+}

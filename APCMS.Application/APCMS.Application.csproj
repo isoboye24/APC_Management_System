@@ -12,4 +12,13 @@
     <PackageReference Include="Scrutor" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\" />
+    <Folder Include="Features\Positions\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\APCMS.Domain\APCMS.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
