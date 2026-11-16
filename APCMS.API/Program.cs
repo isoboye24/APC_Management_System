@@ -1,6 +1,7 @@
 using APCMS.Application;
 using APCMS.Infrastructure;
 using APCMS.Persistence;
+using DotNetEnv;
 using QuestPDF.Infrastructure;
 using System.Text.Json.Serialization;
 
@@ -13,7 +14,9 @@ builder.WebHost.ConfigureKestrel(options =>
     options.ListenAnyIP(2001);
 });
 
-/// Add services to the container.
+Env.TraversePath().Load();
+
+// Add services to the container.
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
