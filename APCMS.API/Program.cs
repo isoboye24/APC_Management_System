@@ -1,10 +1,32 @@
+using APCMS.Persisitence;
+using QuestPDF.Infrastructure;
+using System.Text.Json.Serialization;
+
+QuestPDF.Settings.License = LicenseType.Community;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(2001);
+});
 
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+/// Add services to the container.
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(
+            new JsonStringEnumConverter());
+    });
+
+builder.Configuration.AddEnvironmentVariables();
+
 builder.Services.AddOpenApi();
+
+builder.Services.AddApplicationServices();
+builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddInfrastructure();
 
 var app = builder.Build();
 
