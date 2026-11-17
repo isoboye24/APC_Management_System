@@ -37,6 +37,23 @@ namespace APCMS.Persistence.Migrations
                     b.ToTable("Genders");
                 });
 
+            modelBuilder.Entity("APCMS.Domain.Entities.Month", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Months");
+                });
+
             modelBuilder.Entity("APCMS.Domain.Entities.Position", b =>
                 {
                     b.Property<Guid>("Id")
