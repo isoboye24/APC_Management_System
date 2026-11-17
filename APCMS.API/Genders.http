@@ -1,0 +1,13 @@
+@Host = http://localhost:2001/api/genders
+
+
+### Get All
+
+GET {{Host}}
+Accept: application/json
+
+
+### Search by Id
+
+GET {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e
+ACCEPT: application/json
