@@ -1,0 +1,8 @@
+@Host = http://localhost:2001/api/attendance-statuses
+
+
+### Get All
+
+GET {{Host}}
+Accept: application/json
+
