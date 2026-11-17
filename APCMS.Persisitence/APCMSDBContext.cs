@@ -47,5 +47,6 @@ namespace APCMS.Persistence
         public DbSet<Position> Positions { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Month> Months { get; set; }
+        public DbSet<AttendanceStatus> AttendanceStatuses { get; set; }
     }
 }

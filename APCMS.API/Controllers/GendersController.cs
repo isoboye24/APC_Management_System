@@ -16,7 +16,7 @@ namespace APCMS.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<GenderListsDTO>>> GetAll([FromQuery] GetGenderListsQuery query)
+        public async Task<ActionResult<List<AttendanceStatusListsDTO>>> GetAll([FromQuery] GetAttendanceStatusListsQuery query)
         {
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
