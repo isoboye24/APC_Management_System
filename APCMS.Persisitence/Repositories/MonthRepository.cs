@@ -26,7 +26,7 @@ namespace APCMS.Persistence.Repositories
             }
 
             return await query
-                .OrderBy(x => x.Name)
+                .OrderBy(x => x.Id)
                 .Paginate(filter.Page, filter.RecordsPerPage)
                 .ToListAsync();
         }
