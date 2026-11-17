@@ -22,6 +22,21 @@ namespace APCMS.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("APCMS.Domain.Entities.AttendanceStatus", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AttendanceStatuses");
+                });
+
             modelBuilder.Entity("APCMS.Domain.Entities.Gender", b =>
                 {
                     b.Property<Guid>("Id")

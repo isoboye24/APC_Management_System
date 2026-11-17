@@ -19,7 +19,7 @@ namespace APCMS.Persistence.Repositories
             return await _db.Genders.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Gender>> GetFiltered(AttendanceStatusesFilterDTO filter)
+        public async Task<IEnumerable<Gender>> GetFiltered(GendersFilterDTO filter)
         {
             var query = _db.Genders.AsQueryable();
 
