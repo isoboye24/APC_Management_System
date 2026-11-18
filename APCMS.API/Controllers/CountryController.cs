@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.Countries;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Countries.Commands.CreateCountry;
+using APCMS.Application.Features.Countries.Queries.GetCountryDetail;
 using APCMS.Application.Features.Countries.Queries.GetCountryLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,13 @@ namespace APCMS.API.Controllers
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
             return result.Items;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CountryDetailDTO>> GetById(Guid id)
+        {
+            var query = new GetCountryDetailQuery { Id = id };
+            return await _mediator.Send(query);
         }
 
     }
