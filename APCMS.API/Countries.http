@@ -1,0 +1,45 @@
+@Host = http://localhost:2001/api/countries
+
+### Insert
+
+Post {{Host}}
+Content-type: application/json
+{
+  "name": "Treasurer"
+}
+
+### Get All
+
+GET {{Host}}
+Accept: application/json
+
+### Get All Deleted
+
+GET {{Host}}/deleted
+Accept: application/json
+
+
+### Search by Id
+
+GET {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e
+ACCEPT: application/json
+
+### Update by Id
+
+PUT {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e
+Content-type: application/json
+{
+  "name": "Provoke"
+}
+
+### Temporarily Delete by Id
+
+DELETE {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e
+
+### Restore by Id
+
+PUT {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e/restore
+
+### Permanently Delete by Id
+
+DELETE {{Host}}/01a1e648-59d9-7a2e-9de2-877946445c9e/permanent
