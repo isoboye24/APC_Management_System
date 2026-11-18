@@ -44,7 +44,7 @@ namespace APCMS.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Country>> GetFiltered(CountriesFilterDTO filter)
+        public async Task<IEnumerable<Country>> GetFiltered(CountryFilterDTO filter)
         {
             var query = _db.Countries.Where(x => !x.IsDeleted);
 

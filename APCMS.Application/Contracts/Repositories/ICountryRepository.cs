@@ -7,7 +7,7 @@ namespace APCMS.Application.Contracts.Repositories
     public interface ICountryRepository : IRepository<Country>
     {
         Task<bool> Exists(string name, bool isDeleted = false);
-        Task<IEnumerable<Country>> GetFiltered(CountriesFilterDTO filter);
+        Task<IEnumerable<Country>> GetFiltered(CountryFilterDTO filter);
         Task<IEnumerable<Country>> GetDeletedFiltered(DeletedCountriesFilterDTO filter);
     }
 }
