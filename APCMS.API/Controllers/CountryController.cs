@@ -5,6 +5,8 @@ using APCMS.Application.Features.Countries.Commands.DeleteCountry;
 using APCMS.Application.Features.Countries.Commands.UpdateCountry;
 using APCMS.Application.Features.Countries.Queries.GetCountryDetail;
 using APCMS.Application.Features.Countries.Queries.GetCountryLists;
+using APCMS.Application.Features.Countries.Queries.GetDeletedCountryLists;
+using APCMS.Application.Features.Positions.Queries.GetDeletedPositionLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -65,6 +67,14 @@ namespace APCMS.API.Controllers
         {
             await _mediator.Send(new DeleteCountryCommand { Id = id });
             return NoContent();
+        }
+
+        [HttpGet("deleted")]
+        public async Task<ActionResult<List<DeletedCountryListsDTO>>> GetDeleted([FromQuery] GetDeletedCountryListsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
+            return result.Items;
         }
     }
 }
