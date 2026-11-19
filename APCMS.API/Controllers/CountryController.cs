@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.Countries;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Countries.Commands.CreateCountry;
+using APCMS.Application.Features.Countries.Commands.UpdateCountry;
 using APCMS.Application.Features.Countries.Queries.GetCountryDetail;
 using APCMS.Application.Features.Countries.Queries.GetCountryLists;
 using APCMS.Application.Utilities;
@@ -45,5 +46,17 @@ namespace APCMS.API.Controllers
             return await _mediator.Send(query);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, UpdateCountryDTO updateCountryDTO)
+        {
+            var command = new UpdateCountryCommand
+            {
+                Id = id,
+                Name = updateCountryDTO.Name,
+            };
+
+            await _mediator.Send(command);
+            return NoContent();
+        }
     }
 }
