@@ -2,13 +2,12 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Countries.Commands.CreateCountry;
 using APCMS.Application.Features.Countries.Commands.DeleteCountry;
+using APCMS.Application.Features.Countries.Commands.PermanentDeleteCountry;
 using APCMS.Application.Features.Countries.Commands.RestoreCountry;
 using APCMS.Application.Features.Countries.Commands.UpdateCountry;
 using APCMS.Application.Features.Countries.Queries.GetCountryDetail;
 using APCMS.Application.Features.Countries.Queries.GetCountryLists;
 using APCMS.Application.Features.Countries.Queries.GetDeletedCountryLists;
-using APCMS.Application.Features.Positions.Commands.RestorePosition;
-using APCMS.Application.Features.Positions.Queries.GetDeletedPositionLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -87,6 +86,13 @@ namespace APCMS.API.Controllers
                 Id = id
             });
 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}/permanent")]
+        public async Task<IActionResult> DeletePermanently(Guid id)
+        {
+            await _mediator.Send(new PermanentDeleteCountryCommand { Id = id });
             return NoContent();
         }
     }
