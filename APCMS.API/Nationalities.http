@@ -1,0 +1,45 @@
+@Host = http://localhost:2001/api/nationalities
+
+### Insert
+
+Post {{Host}}
+Content-type: application/json
+{
+  "name": "Rwandan"
+}
+
+### Get All
+
+GET {{Host}}
+Accept: application/json
+
+### Search by Id
+
+GET {{Host}}/01a1f3cf-9405-7025-b8dd-25e0b807d22b
+ACCEPT: application/json
+
+### Update by Id
+
+PUT {{Host}}/01a1f3cf-9405-7025-b8dd-25e0b807d22b
+Content-type: application/json
+{
+  "name": "Gabon"
+}
+
+### Temporarily Delete by Id
+
+DELETE {{Host}}/01a1f3cf-9405-7025-b8dd-25e0b807d22b
+
+
+### Get All Deleted
+
+GET {{Host}}/deleted
+Accept: application/json
+
+### Restore by Id
+
+PUT {{Host}}/01a1f3cf-9405-7025-b8dd-25e0b807d22b/restore
+
+### Permanently Delete by Id
+
+DELETE {{Host}}/01a1f3cf-9405-7025-b8dd-25e0b807d22b/permanent
