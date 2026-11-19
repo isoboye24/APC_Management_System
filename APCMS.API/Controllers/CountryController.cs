@@ -2,10 +2,12 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Countries.Commands.CreateCountry;
 using APCMS.Application.Features.Countries.Commands.DeleteCountry;
+using APCMS.Application.Features.Countries.Commands.RestoreCountry;
 using APCMS.Application.Features.Countries.Commands.UpdateCountry;
 using APCMS.Application.Features.Countries.Queries.GetCountryDetail;
 using APCMS.Application.Features.Countries.Queries.GetCountryLists;
 using APCMS.Application.Features.Countries.Queries.GetDeletedCountryLists;
+using APCMS.Application.Features.Positions.Commands.RestorePosition;
 using APCMS.Application.Features.Positions.Queries.GetDeletedPositionLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
@@ -75,6 +77,17 @@ namespace APCMS.API.Controllers
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
             return result.Items;
+        }
+
+        [HttpPut("{id}/restore")]
+        public async Task<IActionResult> Restore(Guid id)
+        {
+            await _mediator.Send(new RestoreCountryCommand
+            {
+                Id = id
+            });
+
+            return NoContent();
         }
     }
 }
