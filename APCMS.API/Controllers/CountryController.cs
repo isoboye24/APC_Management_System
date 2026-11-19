@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.Countries;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Countries.Commands.CreateCountry;
+using APCMS.Application.Features.Countries.Commands.DeleteCountry;
 using APCMS.Application.Features.Countries.Commands.UpdateCountry;
 using APCMS.Application.Features.Countries.Queries.GetCountryDetail;
 using APCMS.Application.Features.Countries.Queries.GetCountryLists;
@@ -56,6 +57,13 @@ namespace APCMS.API.Controllers
             };
 
             await _mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _mediator.Send(new DeleteCountryCommand { Id = id });
             return NoContent();
         }
     }
