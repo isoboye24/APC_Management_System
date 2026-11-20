@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.Nationalities;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Nationalities.Commands.CreateNationality;
+using APCMS.Application.Features.Nationalities.Commands.UpdateNationality;
 using APCMS.Application.Features.Nationalities.Queries.GetNationalityDetail;
 using APCMS.Application.Features.Nationalities.Queries.GetNationalityLists;
 using APCMS.Application.Utilities;
@@ -43,6 +44,19 @@ namespace APCMS.API.Controllers
         {
             var query = new GetNationalityDetailQuery { Id = id };
             return await _mediator.Send(query);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, UpdateNationalityDTO updateNationalityDTO)
+        {
+            var command = new UpdateNationalityCommand
+            {
+                Id = id,
+                Name = updateNationalityDTO.Name,
+            };
+
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }
