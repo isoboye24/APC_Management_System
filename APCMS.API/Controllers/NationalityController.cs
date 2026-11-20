@@ -2,6 +2,7 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Nationalities.Commands.CreateNationality;
 using APCMS.Application.Features.Nationalities.Commands.DeleteNationality;
+using APCMS.Application.Features.Nationalities.Commands.RestoreNationality;
 using APCMS.Application.Features.Nationalities.Commands.UpdateNationality;
 using APCMS.Application.Features.Nationalities.Queries.GetDeletedNationalityLists;
 using APCMS.Application.Features.Nationalities.Queries.GetNationalityDetail;
@@ -74,6 +75,17 @@ namespace APCMS.API.Controllers
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
             return result.Items;
+        }
+
+        [HttpPut("{id}/restore")]
+        public async Task<IActionResult> Restore(Guid id)
+        {
+            await _mediator.Send(new RestoreNationalityCommand
+            {
+                Id = id
+            });
+
+            return NoContent();
         }
     }
 }
