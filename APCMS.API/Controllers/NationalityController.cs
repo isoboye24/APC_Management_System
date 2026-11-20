@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.Nationalities;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Nationalities.Commands.CreateNationality;
+using APCMS.Application.Features.Nationalities.Commands.DeleteNationality;
 using APCMS.Application.Features.Nationalities.Commands.UpdateNationality;
 using APCMS.Application.Features.Nationalities.Queries.GetNationalityDetail;
 using APCMS.Application.Features.Nationalities.Queries.GetNationalityLists;
@@ -56,6 +57,13 @@ namespace APCMS.API.Controllers
             };
 
             await _mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _mediator.Send(new DeleteNationalityCommand { Id = id });
             return NoContent();
         }
     }
