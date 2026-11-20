@@ -2,7 +2,7 @@
 
 namespace APCMS.Application.Features.AttendanceStatuses.GetAttendanceStatusList
 {
-    public static class MapperExtensions
+    internal static class MapperExtensions
     {
         internal static AttendanceStatusListsDTO ToDTO(this AttendanceStatus attendanceStatus)
         {

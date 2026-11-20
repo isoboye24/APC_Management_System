@@ -2,7 +2,7 @@
 
 namespace APCMS.Application.Features.Genders.GetGenderList
 {
-    public static class MapperExtensions
+    internal static class MapperExtensions
     {
         internal static GenderListsDTO ToDTO(this Gender gender)
         {
