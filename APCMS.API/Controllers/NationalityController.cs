@@ -2,6 +2,7 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Nationalities.Commands.CreateNationality;
 using APCMS.Application.Features.Nationalities.Commands.DeleteNationality;
+using APCMS.Application.Features.Nationalities.Commands.PermanentlyDeleteNationality;
 using APCMS.Application.Features.Nationalities.Commands.RestoreNationality;
 using APCMS.Application.Features.Nationalities.Commands.UpdateNationality;
 using APCMS.Application.Features.Nationalities.Queries.GetDeletedNationalityLists;
@@ -85,6 +86,13 @@ namespace APCMS.API.Controllers
                 Id = id
             });
 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}/permanent")]
+        public async Task<IActionResult> DeletePermanently(Guid id)
+        {
+            await _mediator.Send(new PermanentDeleteNationalityCommand { Id = id });
             return NoContent();
         }
     }
