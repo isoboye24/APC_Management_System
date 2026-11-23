@@ -1,0 +1,47 @@
+@Host = http://localhost:2001/api/employment-statuses
+
+### Insert
+
+Post {{Host}}
+Content-type: application/json
+{
+  "name": "Testing"
+}
+
+### Get All
+
+GET {{Host}}
+Accept: application/json
+
+
+### Search by Id
+
+GET {{Host}}/01A207B8-1A9B-7FA1-B44F-B9B65DC8CCFB
+ACCEPT: application/json
+
+### Update by Id
+
+PUT {{Host}}/01A207B8-1A9B-7FA1-B44F-B9B65DC8CCFB
+Content-type: application/json
+{
+  "name": "Provoke"
+}
+
+### Temporarily Delete by Id
+
+DELETE {{Host}}/01A207B8-1A9B-7FA1-B44F-B9B65DC8CCFB
+
+
+### Get All Deleted
+
+GET {{Host}}/deleted
+Accept: application/json
+
+
+### Restore by Id
+
+PUT {{Host}}/01A207B8-1A9B-7FA1-B44F-B9B65DC8CCFB/restore
+
+### Permanently Delete by Id
+
+DELETE {{Host}}/01A207B8-1A9B-7FA1-B44F-B9B65DC8CCFB/permanent
