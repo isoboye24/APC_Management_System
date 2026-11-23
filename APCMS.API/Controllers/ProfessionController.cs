@@ -1,5 +1,7 @@
 ﻿using APCMS.API.DTOs.Professions;
+using APCMS.API.Utilities;
 using APCMS.Application.Features.Professions.Commands.CreateProfession;
+using APCMS.Application.Features.Professions.Queries.GetProfessionLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +27,15 @@ namespace APCMS.API.Controllers
             };
             await _mediator.Send(command);
             return Ok();
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult<List<ProfessionListsDTO>>> GetAll([FromQuery] GetProfessionListsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
+            return result.Items;
         }
     }
 }
