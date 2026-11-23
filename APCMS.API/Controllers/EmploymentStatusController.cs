@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.EmploymentStatuses;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.EmploymentStatuses.Commands.CreateEmploymentStatus;
+using APCMS.Application.Features.EmploymentStatuses.Commands.UpdateEmploymentStatus;
 using APCMS.Application.Features.EmploymentStatuses.Queries.GetEmploymentStatusDetail;
 using APCMS.Application.Features.EmploymentStatuses.Queries.GetEmploymentStatusLists;
 using APCMS.Application.Utilities;
@@ -43,6 +44,19 @@ namespace APCMS.API.Controllers
         {
             var query = new GetEmploymentStatusDetailQuery { Id = id };
             return await _mediator.Send(query);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, UpdateEmploymentStatusDTO updateEmploymentStatusDTO)
+        {
+            var command = new UpdateEmploymentStatusCommand
+            {
+                Id = id,
+                Name = updateEmploymentStatusDTO.Name,
+            };
+
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }
