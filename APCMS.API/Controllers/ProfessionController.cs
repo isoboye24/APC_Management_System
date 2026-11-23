@@ -1,9 +1,11 @@
 ﻿using APCMS.API.DTOs.Professions;
 using APCMS.API.Utilities;
+using APCMS.Application.Features.Positions.Queries.GetDeletedPositionLists;
 using APCMS.Application.Features.Professions.Commands.CreateProfession;
 using APCMS.Application.Features.Professions.Commands.DeleteProfession;
 using APCMS.Application.Features.Professions.Commands.RestoreProfession;
 using APCMS.Application.Features.Professions.Commands.UpdateProfession;
+using APCMS.Application.Features.Professions.Queries.GetDeletedProfessionLists;
 using APCMS.Application.Features.Professions.Queries.GetProfessionDetail;
 using APCMS.Application.Features.Professions.Queries.GetProfessionLists;
 using APCMS.Application.Utilities;
@@ -69,7 +71,13 @@ namespace APCMS.API.Controllers
             return NoContent();
         }
 
-
+        [HttpGet("deleted")]
+        public async Task<ActionResult<List<DeletedProfessionListsDTO>>> GetDeleted([FromQuery] GetDeletedProfessionListsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
+            return result.Items;
+        }
 
         [HttpPut("{id}/restore")]
         public async Task<IActionResult> Restore(Guid id)

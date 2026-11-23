@@ -9,6 +9,6 @@ namespace APCMS.Application.Contracts.Repositories
         Task<bool> Exists(string name, bool isDeleted = false);
         Task<IEnumerable<Profession>> GetFiltered(ProfessionFilterDTO filter);
 
-        Task<IEnumerable<Profession>> GetDeletedFiltered(DeletedProfessionFilterDTO filter);
+        Task<IEnumerable<Profession>> GetDeletedFiltered(Features.Professions.Queries.GetDeletedProfessionLists.DeletedProfessionsFilterDTO filter);
     }
 }

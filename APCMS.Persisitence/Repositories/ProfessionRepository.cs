@@ -29,7 +29,7 @@ namespace APCMS.Persistence.Repositories
             }
         }
 
-        public async Task<IEnumerable<Profession>> GetDeletedFiltered(DeletedProfessionFilterDTO filter)
+        public async Task<IEnumerable<Profession>> GetDeletedFiltered(Application.Features.Professions.Queries.GetDeletedProfessionLists.DeletedProfessionsFilterDTO filter)
         {
             var query = _db.Professions.Where(x => x.IsDeleted);
 
