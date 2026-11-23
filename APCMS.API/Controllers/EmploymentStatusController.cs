@@ -1,5 +1,7 @@
 ﻿using APCMS.API.DTOs.EmploymentStatuses;
+using APCMS.API.Utilities;
 using APCMS.Application.Features.EmploymentStatuses.Commands.CreateEmploymentStatus;
+using APCMS.Application.Features.EmploymentStatuses.Queries.GetEmploymentStatusLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +27,14 @@ namespace APCMS.API.Controllers
             };
             await _mediator.Send(command);
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<EmploymentStatusListsDTO>>> GetAll([FromQuery] GetEmploymentStatusListsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
+            return result.Items;
         }
     }
 }
