@@ -51,5 +51,6 @@ namespace APCMS.Persistence
         public DbSet<Country> Countries { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
+        public DbSet<EmploymentStatus> EmploymentStatuses { get; set; }
     }
 }
