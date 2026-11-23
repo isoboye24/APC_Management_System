@@ -2,6 +2,7 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.MaritalStatuses.Commands.CreateMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Commands.DeleteMaritalStatus;
+using APCMS.Application.Features.MaritalStatuses.Commands.RestoreMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Commands.UpdateMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Queries.GetDeletedMaritalStatusLists;
 using APCMS.Application.Features.MaritalStatuses.Queries.GetMaritalStatusDetail;
@@ -74,6 +75,17 @@ namespace APCMS.API.Controllers
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
             return result.Items;
+        }
+
+        [HttpPut("{id}/restore")]
+        public async Task<IActionResult> Restore(Guid id)
+        {
+            await _mediator.Send(new RestoreMaritalStatusCommand
+            {
+                Id = id
+            });
+
+            return NoContent();
         }
     }
 }
