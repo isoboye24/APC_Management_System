@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.MaritalStatuses;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.MaritalStatuses.Commands.CreateMaritalStatus;
+using APCMS.Application.Features.MaritalStatuses.Queries.GetMaritalStatusDetail;
 using APCMS.Application.Features.MaritalStatuses.Queries.GetMaritalStatusLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,13 @@ namespace APCMS.API.Controllers
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
             return result.Items;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<MaritalStatusDetailDTO>> GetById(Guid id)
+        {
+            var query = new GetMaritalStatusDetailQuery { Id = id };
+            return await _mediator.Send(query);
         }
     }
 }
