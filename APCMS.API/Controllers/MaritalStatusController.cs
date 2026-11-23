@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.MaritalStatuses;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.MaritalStatuses.Commands.CreateMaritalStatus;
+using APCMS.Application.Features.MaritalStatuses.Commands.DeleteMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Commands.UpdateMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Queries.GetMaritalStatusDetail;
 using APCMS.Application.Features.MaritalStatuses.Queries.GetMaritalStatusLists;
@@ -56,6 +57,13 @@ namespace APCMS.API.Controllers
             };
 
             await _mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _mediator.Send(new DeleteMaritalStatusCommand { Id = id });
             return NoContent();
         }
     }
