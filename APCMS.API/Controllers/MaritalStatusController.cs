@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.MaritalStatuses;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.MaritalStatuses.Commands.CreateMaritalStatus;
+using APCMS.Application.Features.MaritalStatuses.Commands.UpdateMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Queries.GetMaritalStatusDetail;
 using APCMS.Application.Features.MaritalStatuses.Queries.GetMaritalStatusLists;
 using APCMS.Application.Utilities;
@@ -43,6 +44,19 @@ namespace APCMS.API.Controllers
         {
             var query = new GetMaritalStatusDetailQuery { Id = id };
             return await _mediator.Send(query);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, UpdateMaritalStatusDTO updateMaritalStatusDTO)
+        {
+            var command = new UpdateMaritalStatusCommand
+            {
+                Id = id,
+                Name = updateMaritalStatusDTO.Name,
+            };
+
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }
