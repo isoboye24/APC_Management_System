@@ -1,7 +1,7 @@
 ﻿using APCMS.API.DTOs.Professions;
 using APCMS.API.Utilities;
-using APCMS.Application.Features.Positions.Queries.GetPositionDetail;
 using APCMS.Application.Features.Professions.Commands.CreateProfession;
+using APCMS.Application.Features.Professions.Commands.UpdateProfession;
 using APCMS.Application.Features.Professions.Queries.GetProfessionDetail;
 using APCMS.Application.Features.Professions.Queries.GetProfessionLists;
 using APCMS.Application.Utilities;
@@ -45,6 +45,19 @@ namespace APCMS.API.Controllers
         {
             var query = new GetProfessionDetailQuery { Id = id };
             return await _mediator.Send(query);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, UpdateProfessionDTO updateProfessionDTO)
+        {
+            var command = new UpdateProfessionCommand
+            {
+                Id = id,
+                Name = updateProfessionDTO.Name,
+            };
+
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }
