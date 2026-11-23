@@ -2,6 +2,7 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.EmploymentStatuses.Commands.CreateEmploymentStatus;
 using APCMS.Application.Features.EmploymentStatuses.Commands.DeleteEmploymentStatus;
+using APCMS.Application.Features.EmploymentStatuses.Commands.PermanentlyDeleteEmploymentStatus;
 using APCMS.Application.Features.EmploymentStatuses.Commands.RestoreEmploymentStatus;
 using APCMS.Application.Features.EmploymentStatuses.Commands.UpdateEmploymentStatus;
 using APCMS.Application.Features.EmploymentStatuses.Queries.GetDeletedEmploymentStatusLists;
@@ -85,6 +86,13 @@ namespace APCMS.API.Controllers
                 Id = id
             });
 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}/permanent")]
+        public async Task<IActionResult> DeletePermanently(Guid id)
+        {
+            await _mediator.Send(new PermanentlyDeleteEmploymentStatusCommand { Id = id });
             return NoContent();
         }
     }
