@@ -1,8 +1,8 @@
 ﻿using APCMS.API.DTOs.Professions;
 using APCMS.API.Utilities;
-using APCMS.Application.Features.Positions.Queries.GetDeletedPositionLists;
 using APCMS.Application.Features.Professions.Commands.CreateProfession;
 using APCMS.Application.Features.Professions.Commands.DeleteProfession;
+using APCMS.Application.Features.Professions.Commands.PermanentlyDeleteProfession;
 using APCMS.Application.Features.Professions.Commands.RestoreProfession;
 using APCMS.Application.Features.Professions.Commands.UpdateProfession;
 using APCMS.Application.Features.Professions.Queries.GetDeletedProfessionLists;
@@ -87,6 +87,13 @@ namespace APCMS.API.Controllers
                 Id = id
             });
 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}/permanent")]
+        public async Task<IActionResult> DeletePermanently(Guid id)
+        {
+            await _mediator.Send(new PermanentlyDeleteProfessionCommand { Id = id });
             return NoContent();
         }
     }
