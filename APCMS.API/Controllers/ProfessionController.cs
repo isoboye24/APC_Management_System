@@ -1,6 +1,8 @@
 ﻿using APCMS.API.DTOs.Professions;
 using APCMS.API.Utilities;
+using APCMS.Application.Features.Positions.Queries.GetPositionDetail;
 using APCMS.Application.Features.Professions.Commands.CreateProfession;
+using APCMS.Application.Features.Professions.Queries.GetProfessionDetail;
 using APCMS.Application.Features.Professions.Queries.GetProfessionLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +38,13 @@ namespace APCMS.API.Controllers
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
             return result.Items;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProfessionDetailDTO>> GetById(Guid id)
+        {
+            var query = new GetProfessionDetailQuery { Id = id };
+            return await _mediator.Send(query);
         }
     }
 }
