@@ -2,6 +2,7 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.Professions.Commands.CreateProfession;
 using APCMS.Application.Features.Professions.Commands.DeleteProfession;
+using APCMS.Application.Features.Professions.Commands.RestoreProfession;
 using APCMS.Application.Features.Professions.Commands.UpdateProfession;
 using APCMS.Application.Features.Professions.Queries.GetProfessionDetail;
 using APCMS.Application.Features.Professions.Queries.GetProfessionLists;
@@ -65,6 +66,19 @@ namespace APCMS.API.Controllers
         public async Task<IActionResult> Delete(Guid id)
         {
             await _mediator.Send(new DeleteProfessionCommand { Id = id });
+            return NoContent();
+        }
+
+
+
+        [HttpPut("{id}/restore")]
+        public async Task<IActionResult> Restore(Guid id)
+        {
+            await _mediator.Send(new RestoreProfessionCommand
+            {
+                Id = id
+            });
+
             return NoContent();
         }
     }
