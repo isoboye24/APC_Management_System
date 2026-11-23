@@ -2,6 +2,7 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.EmploymentStatuses.Commands.CreateEmploymentStatus;
 using APCMS.Application.Features.EmploymentStatuses.Commands.DeleteEmploymentStatus;
+using APCMS.Application.Features.EmploymentStatuses.Commands.RestoreEmploymentStatus;
 using APCMS.Application.Features.EmploymentStatuses.Commands.UpdateEmploymentStatus;
 using APCMS.Application.Features.EmploymentStatuses.Queries.GetDeletedEmploymentStatusLists;
 using APCMS.Application.Features.EmploymentStatuses.Queries.GetEmploymentStatusDetail;
@@ -74,6 +75,17 @@ namespace APCMS.API.Controllers
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
             return result.Items;
+        }
+
+        [HttpPut("{id}/restore")]
+        public async Task<IActionResult> Restore(Guid id)
+        {
+            await _mediator.Send(new RestoreEmploymentStatusCommand
+            {
+                Id = id
+            });
+
+            return NoContent();
         }
     }
 }
