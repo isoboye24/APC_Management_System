@@ -2,6 +2,7 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.MaritalStatuses.Commands.CreateMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Commands.DeleteMaritalStatus;
+using APCMS.Application.Features.MaritalStatuses.Commands.PermanentlyDeleteMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Commands.RestoreMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Commands.UpdateMaritalStatus;
 using APCMS.Application.Features.MaritalStatuses.Queries.GetDeletedMaritalStatusLists;
@@ -85,6 +86,13 @@ namespace APCMS.API.Controllers
                 Id = id
             });
 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}/permanent")]
+        public async Task<IActionResult> DeletePermanently(Guid id)
+        {
+            await _mediator.Send(new PermanentlyDeleteMaritalStatusCommand { Id = id });
             return NoContent();
         }
     }

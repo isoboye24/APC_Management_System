@@ -22,7 +22,7 @@ namespace APCMS.Application.Features.MaritalStatuses.Commands.RestoreMaritalStat
 
             if (maritalStatus is null)
             {
-                throw new NotFoundException("MaritalStatus not found");
+                throw new NotFoundException("Marital status not found");
             }
 
             try
