@@ -1,6 +1,7 @@
 ﻿using APCMS.API.DTOs.PaymentStatuses;
 using APCMS.API.Utilities;
 using APCMS.Application.Features.PaymentStatuses.Commands.CreatePaymentStatus;
+using APCMS.Application.Features.PaymentStatuses.Queries.GetPaymentStatusDetail;
 using APCMS.Application.Features.PaymentStatuses.Queries.GetPaymentStatusLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
@@ -37,5 +38,11 @@ namespace APCMS.API.Controllers
             return result.Items;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PaymentStatusDetailDTO>> GetById(Guid id)
+        {
+            var query = new GetPaymentStatusDetailQuery { Id = id };
+            return await _mediator.Send(query);
+        }
     }
 }
