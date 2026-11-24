@@ -3,8 +3,10 @@ using APCMS.API.Utilities;
 using APCMS.Application.Features.PaymentStatuses.Commands.CreatePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Commands.DeletePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Commands.UpdatePaymentStatus;
+using APCMS.Application.Features.PaymentStatuses.Queries.GetDeletedPaymentStatusLists;
 using APCMS.Application.Features.PaymentStatuses.Queries.GetPaymentStatusDetail;
 using APCMS.Application.Features.PaymentStatuses.Queries.GetPaymentStatusLists;
+using APCMS.Application.Features.Positions.Queries.GetDeletedPositionLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -65,6 +67,14 @@ namespace APCMS.API.Controllers
         {
             await _mediator.Send(new DeletePaymentStatusCommand { Id = id });
             return NoContent();
+        }
+
+        [HttpGet("deleted")]
+        public async Task<ActionResult<List<DeletedPaymentStatusListDTO>>> GetDeleted([FromQuery] GetDeletedPaymentStatusListsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
+            return result.Items;
         }
     }
 }
