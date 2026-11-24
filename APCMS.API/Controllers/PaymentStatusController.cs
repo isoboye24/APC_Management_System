@@ -2,6 +2,7 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.PaymentStatuses.Commands.CreatePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Commands.DeletePaymentStatus;
+using APCMS.Application.Features.PaymentStatuses.Commands.PermanentlyDeletePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Commands.RestorePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Commands.UpdatePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Queries.GetDeletedPaymentStatusLists;
@@ -85,6 +86,13 @@ namespace APCMS.API.Controllers
                 Id = id
             });
 
+            return NoContent();
+        }
+
+        [HttpDelete("{id}/permanent")]
+        public async Task<IActionResult> DeletePermanently(Guid id)
+        {
+            await _mediator.Send(new PermanentlyDeletePaymentStatusCommand { Id = id });
             return NoContent();
         }
     }
