@@ -2,11 +2,11 @@
 using APCMS.API.Utilities;
 using APCMS.Application.Features.PaymentStatuses.Commands.CreatePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Commands.DeletePaymentStatus;
+using APCMS.Application.Features.PaymentStatuses.Commands.RestorePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Commands.UpdatePaymentStatus;
 using APCMS.Application.Features.PaymentStatuses.Queries.GetDeletedPaymentStatusLists;
 using APCMS.Application.Features.PaymentStatuses.Queries.GetPaymentStatusDetail;
 using APCMS.Application.Features.PaymentStatuses.Queries.GetPaymentStatusLists;
-using APCMS.Application.Features.Positions.Queries.GetDeletedPositionLists;
 using APCMS.Application.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -75,6 +75,17 @@ namespace APCMS.API.Controllers
             var result = await _mediator.Send(query);
             HttpContext.InsertPaginationInformationInHeader(result.TotalAmountOfRecords);
             return result.Items;
+        }
+
+        [HttpPut("{id}/restore")]
+        public async Task<IActionResult> Restore(Guid id)
+        {
+            await _mediator.Send(new RestorePaymentStatusCommand
+            {
+                Id = id
+            });
+
+            return NoContent();
         }
     }
 }
