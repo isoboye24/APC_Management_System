@@ -54,5 +54,6 @@ namespace APCMS.Persistence
         public DbSet<EmploymentStatus> EmploymentStatuses { get; set; }
         public DbSet<Profession> Professions { get; set; }
         public DbSet<PaymentStatus> PaymentStatuses { get; set; }
+        public DbSet<MembershipCategory> MembershipCategories { get; set; }
     }
 }
