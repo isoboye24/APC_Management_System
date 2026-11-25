@@ -16,8 +16,4 @@
     <ProjectReference Include="..\APCMS.Domain\APCMS.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\MembershipCategories\Commands\" />
-  </ItemGroup>
-
 </Project>
